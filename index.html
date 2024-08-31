@@ -112,7 +112,9 @@
   onclick="const newDiv = document.createElement('b-c'); 
   newDiv.shadowRoot.querySelector('.wrapper svg .b').style.color = document.querySelector('#bc').shadowRoot.querySelector('.b').style.color;
   newDiv.shadowRoot.querySelector('.wrapper svg .c').style.color = document.querySelector('#bc').shadowRoot.querySelector('.c').style.color; 
-  newDiv.shadowRoot.querySelector('.controls').classList.add('extra'); document.querySelector('.output').appendChild(newDiv);">
+  newDiv.shadowRoot.querySelector('.controls').classList.add('extra'); document.querySelector('.output').appendChild(newDiv);
+  newDiv.setAttribute('width', document.querySelector('#slider').value);
+  ">
   Add another
   </button>
   <div class="output" >

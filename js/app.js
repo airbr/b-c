@@ -22,7 +22,7 @@ class Bc extends HTMLElement {
       }
     }
     attributeChangedCallback(name, oldValue, newValue) {
-      const icon = document.getElementById('bc');
+      const icon = this.shadowRoot.querySelector('svg');
       if (name === 'width') {
         if (newValue !== oldValue) {
           icon.style.width =
