@@ -30,7 +30,15 @@
   <!-- Add your site or application content here -->
   <b-c id="bc" width="200"></b-c>
 
+  <style>
+    :root, svg {
+      --main-b-color: #25ae5f;
+      --main-c-color: #2981bb;
+    }
+  </style>
+
    <template id="bcsvg">
+    <div class="wrapper">
     <style>
       svg {
         min-width: 200px;
@@ -40,21 +48,27 @@
         display: none;
       }
 
+    /* :root, svg {
+      --main-b-color: #25ae5f;
+      --main-c-color: #2981bb;
+    } */
+
     </style>
     <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.78 60.83">
-      <title>logo</title><path d="M48,17.57l-31.89,14L48,45.56V57.84L5.61,37.38V25.75L48,5.25V17.57Z" transform="translate(-5.61 -1.03)" style="fill:black"/>
+      <title>logo</title>
+      <path d="M48,17.57l-31.89,14L48,45.56V57.84L5.61,37.38V25.75L48,5.25V17.57Z" transform="translate(-5.61 -1.03)" style="fill:black"/>
       <path d="M142,17.57V5.25l42.4,20.5V37.38L142,57.84V45.56l31.89-13.95Z" transform="translate(-5.61 -1.03)" style="fill:black"/>
       <path class="b" d="M68.95,23.86a15.46,15.46,0,0,1,4.82-5.35A11.11,11.11,0,0,1,80,16.72q7.64,0,11.76,5.83t4.13,16.73q0,10.75-4.07,16.66a13.09,13.09,0,0,1-11.44,5.91A12.07,12.07,0,0,1,73.59,60a13.25,13.25,0,0,1-4.64-5.6v6.37H57.74V1H68.95V23.86ZM84.6,39.37q0-6.22-2.07-9.75a6.37,6.37,0,0,0-5.72-3.53,6.45,6.45,0,0,0-5.76,3.53q-2.11,3.53-2.11,9.75t2.11,9.75a6.45,6.45,0,0,0,5.76,3.53,6.37,6.37,0,0,0,5.72-3.53Q84.6,45.58,84.6,39.37Z" transform="translate(-5.61 -1.03)" style="fill:currentColor; color: #25ae5f"/>
       <path d="M132.26,58.55a23.61,23.61,0,0,1-6.1,2.48,28.6,28.6,0,0,1-7,.82q-9.94,0-15.54-6T98,39.29q0-10.63,5.64-16.64t15.58-6a27.19,27.19,0,0,1,6.66.81,28.47,28.47,0,0,1,6.39,2.49V30.23A18.38,18.38,0,0,0,126.87,27a16.77,16.77,0,0,0-6.08-1.13q-5.49,0-8.44,3.49t-3,9.94q0,6.45,3,9.9t8.44,3.45a16.82,16.82,0,0,0,6.1-1.09,17.85,17.85,0,0,0,5.37-3.32V58.55Z" transform="translate(-5.61 -1.03)" style="fill:currentColor; color: #2981bb" class="c"/>
     </svg>
     <div class="controls">
     <div>
-      <input type="color" id="first" name="b" value="#25ae5f" oninput="document.querySelector('#bc').shadowRoot.querySelector('.b').style.color = this.value" />
+      <input type="color" id="first" name="b" value="#25ae5f" oninput="document.querySelector('#bc').shadowRoot.querySelector('.b').style.color = this.value;" />
       <label for="b">B Color</label>
      </div>
   
      <div>
-      <input type="color" id="second" name="c" value="#2981bb" oninput="document.querySelector('#bc').shadowRoot.querySelector('.c').style.color = this.value" />
+      <input type="color" id="second" name="c" value="#2981bb" oninput="document.querySelector('#bc').shadowRoot.querySelector('.c').style.color = this.value;" />
       <label for="c">C Color</label>
      </div>
     
@@ -75,7 +89,7 @@
         "Your browser does not support the EyeDropper API";
       return;
     }
-  
+
     const eyeDropper = new EyeDropper();
   
     eyeDropper
@@ -91,9 +105,16 @@
       });
   });
      </script>
+     </div>
   </template>
 
-  <button id="add" onclick="const newDiv = document.createElement('b-c'); newDiv.shadowRoot.querySelector('.controls').classList.add('extra'); document.querySelector('.output').appendChild(newDiv);">Add another</button>
+  <button id="add" 
+  onclick="const newDiv = document.createElement('b-c'); 
+  newDiv.shadowRoot.querySelector('.wrapper svg .b').style.color = document.querySelector('#bc').shadowRoot.querySelector('.b').style.color;
+  newDiv.shadowRoot.querySelector('.wrapper svg .c').style.color = document.querySelector('#bc').shadowRoot.querySelector('.c').style.color; 
+  newDiv.shadowRoot.querySelector('.controls').classList.add('extra'); document.querySelector('.output').appendChild(newDiv);">
+  Add another
+  </button>
   <div class="output" >
 
   </div>

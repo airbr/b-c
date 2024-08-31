@@ -6,7 +6,6 @@ class Bc extends HTMLElement {
       super();
 
       let template = document.getElementById("bcsvg");
-      console.log(template);
       let templateContent = template.content;
 
       const shadowRoot = this.attachShadow({ mode: "open" });
